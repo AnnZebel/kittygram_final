@@ -15,6 +15,7 @@ services:
     image: ann1804/kittygram_backend
     env_file: .env
     volumes:
+      - /var/www/kittygram/:/static/
       - /var/www/kittygram/media/:/app/media/
     depends_on:
       - kittygram_db
