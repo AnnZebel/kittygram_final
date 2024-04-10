@@ -7,7 +7,7 @@ volumes:
 
 services:
   kittygram_db:
-    image: postgres:13.10
+    image: postgres:13
     env_file: .env
     volumes:
       - kittygram_pg_data:/var/lib/postgresql/data
@@ -15,8 +15,7 @@ services:
     image: ann1804/kittygram_backend
     env_file: .env
     volumes:
-      - static:/static/
-      - media:/app/media/
+      - /var/www/kittygram/media/:/app/media/
     depends_on:
       - kittygram_db
   frontend:
@@ -31,5 +30,4 @@ services:
     ports:
       - 9000:80
     volumes:
-      - static:/static
-      - media:/app/media/
+      - /var/www/kittygram/:/static/
